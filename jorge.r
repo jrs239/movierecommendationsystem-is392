@@ -3,6 +3,10 @@ library(tidyr)
 library(reshape2)
 library(recommenderlab)
 
+file_path <- "netflix_data.csv"
+data<- read.csv(file_path, header = TRUE, sep = ",", stringsAsFactors = FALSE)
+col_names<-colnames(data)
+
 # Check for missing values and na values
 missing_values <- sapply(data, function(x) sum(is.na(x)))
 na_values <- sapply(data, function(x) sum(x == "NA"))
@@ -34,23 +38,25 @@ list_of_movies <- as.list(ten_random_movies$title)
 
 
 #simulated user input
-user.ratings <- data.frame(
-    movies = c()
-
-    rating = c()
+user_ratings <- data.frame(
+  movie = c("Pulp Fiction", "The Godfather", "The Dark Knight", "Fight Club", "Forrest Gump"),
+  rating = c(5, 4, 4, 5, 3)
 )
 
+#convert to wide format
 wide_user <- dcast(user_ratings, . ~ movie, value.var = "rating")
 wide_user <- wide_user[-1]
+
 
 all_titles <- sort(unique(shortlist$title))
 
 for (title in all_titles) {
-  if (!(title %in% names(user_wide))) {
-    user_wide[[title]] <- NA
+  if (!(title %in% names(wide_user))) {
+    wide_user[[title]] <- NA
   }
 }
 
+#arrange columns alphabetically
 wide_user <- wide_user[, sort(names(wide_user))]
 
 
