@@ -1,6 +1,6 @@
 # install.packages("recommenderlab")
 library(recommenderlab)
-file_path <- "IMDBmoviedataset.csv"
+file_path <- "imdb_top_1000.csv"
 # Load data
 netflix_data <- read.csv(file_path, header = TRUE, sep = ",", stringsAsFactors = FALSE)
 netflix_data_ratings <- netflix_data[netflix_data$rating != 0, ]

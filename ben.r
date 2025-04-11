@@ -1,4 +1,4 @@
-file_path <- "IMDBmoviedataset.csv"
+file_path <- "imdb_top_1000.csv"
 data<- read.csv(file_path, header = TRUE, sep = ",", stringsAsFactors = FALSE)
 col_names<-colnames(data)
 
