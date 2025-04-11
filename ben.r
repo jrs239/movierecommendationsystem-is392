@@ -22,3 +22,5 @@ print(popular_movies$title)
 
 ten_random_movies <- data[sample(nrow(data), 10), ] # Select 10 random movies
 print(ten_random_movies$title) # Print the titles of the random movies
+# convert the titles to a list
+list_of_movies <- as.list(ten_random_movies$title)
