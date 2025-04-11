@@ -18,3 +18,7 @@ popular_movies <- data[order(data$rating, decreasing = TRUE), ]
 popular_movies <- popular_movies[1:50, ] # Select top 50 movies
 # Print the titles of the popular movies
 print(popular_movies$title)
+
+
+ten_random_movies <- data[sample(nrow(data), 10), ] # Select 10 random movies
+print(ten_random_movies$title) # Print the titles of the random movies
